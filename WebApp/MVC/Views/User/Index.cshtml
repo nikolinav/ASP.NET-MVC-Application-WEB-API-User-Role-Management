@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Data.Model.UserDetailsDTO>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/Skripta.js")
+
+}
+
+
+@{
+    ViewBag.Title = "Index";
+}
+@Html.AntiForgeryToken()
+
+<script async defer src=" https://maps.googleapis.com/maps/api/js?key=AIzaSyAATm_ldibd_PSeUzdmrO25MGCx79eQDGA&libraries=places"></script>
+
+@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-danger btn-md" })
+
+
+@{
+    Html.RenderPartial("_UserList");
+}
+
+
+@{
+    Html.RenderPartial("_Logout");
+}
+
+
+@{
+    Html.RenderPartial("_PartialMapp");
+
+}
+
+
+

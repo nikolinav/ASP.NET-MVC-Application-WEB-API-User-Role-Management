@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "_Logout";
+}
+
+@{
+    string email = HttpContext.Current.User.Identity.Name;
+    if (!string.IsNullOrEmpty(email))
+    {
+        <h4></h4>
+        <span id="btnLogout" class="btn btn-info btn-md">
+            <span class="glyphicon glyphicon-log-out">
+                @Html.ActionLink(HttpContext.Current.User.Identity.Name + " | Logout", "Logout", "Account", new { @class = "logout", style = "font-weight:bold" })
+            </span>
+        </span>
+    }
+}
+
+

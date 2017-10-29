@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Data.Model.UserDetailsDTO>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/Skripta.js")
+}
+
+
+@{
+    ViewBag.Title = "_PartialMapp";
+}
+
+<link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+<script type='text/javascript' src='http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js?2'></script>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
+<h3>Users Location</h3>
+<div id="map"></div>

@@ -1,0 +1,89 @@
+﻿@using Data.Model
+@model Data.Model.UserDetailsDTO
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm("Edit", "User", FormMethod.Post, new { enctype = "multipart/form-data"}))
+
+{
+
+
+    <div>
+
+        @Html.LabelFor(m => m.FirstName)
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+    </div>
+
+    <div>
+
+        @Html.LabelFor(m => m.Address)
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+    </div>
+    <div>
+
+        @Html.LabelFor(m => m.City)
+        @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+    </div>
+    <div>
+
+        @Html.LabelFor(m => m.Age)
+        @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+    </div>
+  
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserRoleId, "User Role", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Users Role", new SelectList(ViewBag.UserRoleId, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.UserRoleId, "", new {@class = "text-danger"})
+        </div>
+    </div>
+
+
+
+    @*<div>
+
+        @Html.LabelFor(m => m.UserRoleName)
+        @Html.TextBoxFor(m => m.UserRoleName, new { @class = "form-control" })
+    </div>
+
+    <div>
+
+        @Html.LabelFor(m => m.DepartmentName)
+        @Html.TextBoxFor(m => m.DepartmentName, new { @class = "form-control" })
+    </div>*@
+
+    if(Model.Files.Any(f => f.FileType == FileType.Avatar)) {
+         <div class="form-group">
+             <span class="control-label col-md-2"><strong>Current Avatar</strong></span>
+             <div class="col-md-10">
+                 <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" />
+             </div>
+         </div>
+     }
+
+    <div class="form-group">
+        @Html.Label("Avatar", new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            <input type="file" id="Avatar" name="upload" />
+        </div>
+    </div>
+
+
+    <div>
+        <input class="form-control" type="submit" />
+    </div>
+
+
+
+}
